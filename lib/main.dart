@@ -21,6 +21,18 @@ class _HomeState extends State<Home> {
 
   List _toDoList = [];
 
+
+  @override
+  void initState() {
+    super.initState();
+
+    _readData().then((data){
+      setState(() {
+        _toDoList = json.decode(data);
+      });
+    });
+  }
+
   void _addToDo(){
     setState(() {
       Map<String, dynamic> newToDo = Map();
